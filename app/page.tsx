@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server'
 import ProductGrid from '@/components/products/ProductGrid'
+import RouletteWheel from '@/components/events/RouletteWheel'
 import { ITEMS_PER_PAGE } from '@/lib/utils/constants'
 
 export const revalidate = 60 // Revalidate every 60 seconds
@@ -27,6 +28,12 @@ export default async function Home() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-6">
+      {/* 룰렛 이벤트 섹션 */}
+      <div className="mb-8">
+        <RouletteWheel />
+      </div>
+
+      {/* 상품 목록 */}
       <h1 className="text-2xl font-bold mb-6">중고거래</h1>
       <ProductGrid
         initialProducts={products || []}
